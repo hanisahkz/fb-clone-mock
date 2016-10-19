@@ -5,18 +5,21 @@ RSpec.describe User, type: :model do
 
   context "validations" do
 
+    #done
     it "should have name and email and password_digest" do
       should have_db_column(:name).of_type(:string)
       should have_db_column(:email).of_type(:string)
       should have_db_column(:password_digest).of_type(:string)
     end
 
+    #done
     describe "validates presence and uniqueness of name and email" do
       it { is_expected.to validate_presence_of(:email) }
       it { is_expected.to validate_presence_of(:name) }
       it { is_expected.to validate_uniqueness_of(:email) }
     end
 
+    #done
     describe "validates password" do
       it { is_expected.to validate_presence_of(:password) }
       it { is_expected.to validate_presence_of(:password_confirmation) }
@@ -37,26 +40,47 @@ RSpec.describe User, type: :model do
 
     # unhappy_path
     describe "cannot be created without a name" do
-      When(:user) { User.create(email: "josh@nextacademy.com", password: "123456", password_confirmation: "123456") }
+      When(:user) { User.create(
+        email: "josh@nextacademy.com", 
+        password: "123456", 
+        password_confirmation: "123456"
+      )}
       Then { user.valid? == false }
     end
 
     describe "cannot be created without a email" do
-      When(:user) { User.create(name: "Josh Teng", password: "123456", password_confirmation: "123456") }
+      When(:user) { User.create(
+        name: "Josh Teng", 
+        password: "123456", 
+        password_confirmation: "123456"
+      )}
       Then { user.valid? == false }
     end
 
 
     describe "cannot be created without a password" do
-      When(:user) { User.create(name: "Josh Teng", email: "josh@nextacademy.com") }
+      When(:user) { User.create(
+        name: "Josh Teng", 
+        email: "josh@nextacademy.com"
+      )}
       Then { user.valid? == false }
     end
 
 
 
     describe "should permit valid email only" do
-      let(:user1) { User.create(name: "Tom", email: "tom@nextacademy.com", password: "123456", password_confirmation: "123456")}
-      let(:user2) { User.create(name: "Delilah",email: "delilah.com", password: "123456", password_confirmation: "123456") }
+      let(:user1) { User.create(
+        name: "Tom", 
+        email: "tom@nextacademy.com", 
+        password: "123456", 
+        password_confirmation: "123456"
+      )}
+      let(:user2) { User.create(
+        name: "Delilah",
+        email: "delilah.com", 
+        password: "123456", 
+        password_confirmation: "123456"
+      )}
 
       # happy_path
       it "sign up with valid email" do
@@ -65,11 +89,13 @@ RSpec.describe User, type: :model do
 
       # unhappy_path
       it "sign up with invalid email" do
-        expect(user2).to be_invalid
+        expect(user2).not_to be_valid
+        # expect(user2).to be_invalid #<- the ori
       end
     end
   end
 
+  #done
   context 'associations with dependency' do
     it { is_expected.to have_many(:statuses).dependent(:destroy)}
     it { is_expected.to have_many(:likes).dependent(:destroy)}

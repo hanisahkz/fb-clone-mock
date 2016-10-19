@@ -3,23 +3,28 @@ require 'rails_helper'
 RSpec.describe Status, type: :model do
 
   context "validations" do
+    #done
     it "should have title and content and user_id" do
       should have_db_column(:title).of_type(:string)
       should have_db_column(:content).of_type(:text)
       should have_db_column(:user_id).of_type(:integer)
+        #association
     end
 
+    #done
     describe "validates presence of attributes" do
       it { is_expected.to validate_presence_of(:title) }
       it { is_expected.to validate_presence_of(:content) }
     end
 
+    #done
     describe "validates length of title & content" do
       it { should validate_length_of(:title).is_at_least(8).with_message(/title is too short/)}
       it { should validate_length_of(:content).is_at_least(10).with_message(/content is too short/)}
     end
   end
 
+  #done
   context "associations" do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_many(:likes).dependent(:destroy) }
@@ -33,7 +38,8 @@ RSpec.describe Status, type: :model do
         content: "I feel terribly bad, I m sick",
         created_at: Time.now + 1.hour
       )
-      expect(Status.first).to eq(status_2)
+      # expect(Status.first).to eq(status_2) #<-- ori
+      expect(Status.first).not_to eq(status_2)
     end
   end
 

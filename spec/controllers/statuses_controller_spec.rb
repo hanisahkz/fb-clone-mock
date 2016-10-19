@@ -9,6 +9,7 @@ RSpec.describe StatusesController, type: :controller do
   let(:valid_params_update) {{ title: "Day One Healthy Challengesss", content: "Banana Chocolate Smoothie", user_id: user.id}}
   let(:invalid_params_update) {{ title: "Day1", content: "Banana Chocolate Smoothie", user_id: user.id}}
 
+  #done
   describe "GET #new" do
     before do
       session[:user_id] = user.id
@@ -28,7 +29,7 @@ RSpec.describe StatusesController, type: :controller do
     end
   end
 
-
+  #done
   describe "POST #create" do
     before do
       session[:user_id] = user.id
@@ -46,6 +47,7 @@ RSpec.describe StatusesController, type: :controller do
       end
     end
 
+    #done
     # unhappy_path
     context "invalid_params" do
       before do
@@ -54,7 +56,7 @@ RSpec.describe StatusesController, type: :controller do
       end
 
       it "displays flash alert message" do
-        expect(flash[:alert]).to include "Error creating status."
+        expect(flash[:alert]).to include("Error creating status.")
       end
 
       it "renders new template again" do
@@ -63,6 +65,7 @@ RSpec.describe StatusesController, type: :controller do
     end
   end
 
+  #done
   describe "GET #edit" do
     before do
       session[:user_id] = user.id
@@ -77,10 +80,9 @@ RSpec.describe StatusesController, type: :controller do
     it "renders the edit template" do
       expect(response).to render_template("edit")
     end
-
   end
 
-
+  #done
   describe "PUT #update" do
     before do
       session[:user_id] = user.id
@@ -113,7 +115,7 @@ RSpec.describe StatusesController, type: :controller do
 
   end
 
-
+  #done
   describe "DELETE #destroy" do
     before do
       session[:user_id] = user.id

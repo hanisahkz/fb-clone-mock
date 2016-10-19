@@ -5,6 +5,7 @@ RSpec.describe LikesController, type: :controller do
   let(:status){user.statuses.create(title: "hello world!", content: "Coding is fun!")}
   let(:status1){user.statuses.create(title: "hello world!!!", content: "Coding is fun!")}
 
+  #done
   describe "POST #create" do
     context "successfully liked" do
 
@@ -23,6 +24,7 @@ RSpec.describe LikesController, type: :controller do
       end
     end
 
+    #done 
     context "duplicate like" do
 
       before do

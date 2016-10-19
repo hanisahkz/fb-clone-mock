@@ -1,0 +1,30 @@
+<%= flash[:notice] %>
+
+<h2>This is an edit page</h2>
+
+<%= form_for(@user), url: {action: "put"} do |form| %>
+  
+   <div class="text-field">
+    <%= form.text_field :name %>
+  </div>
+
+
+  <div class="text-field">
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="password-field">
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="password-field">
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <br>
+  
+  <div class="submit-field">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+
+<% end %>
