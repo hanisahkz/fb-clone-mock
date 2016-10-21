@@ -7,7 +7,7 @@ RSpec.describe SessionsController, type: :controller do
   let(:invalid_params) {{session: {email: user.email, password: "1234567", password_confirmation: "1234567"}}}
 
   describe "GET #new" do
-
+    #done
     before do
       get :new
     end
@@ -22,6 +22,7 @@ RSpec.describe SessionsController, type: :controller do
 
   end
 
+  #done
   describe "POST #create" do
     # happy path
     context "valid log in params" do
@@ -30,6 +31,7 @@ RSpec.describe SessionsController, type: :controller do
         post :create, valid_params
       end
 
+      #how to implement this?
       it "sets session user_id" do
         expect(session[:user_id]).to eq(user.id)
       end
@@ -68,6 +70,7 @@ RSpec.describe SessionsController, type: :controller do
 
   end
 
+  #done
   describe "DELETE #destroy" do
 
     before do

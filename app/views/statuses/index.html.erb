@@ -1,0 +1,10 @@
+ <%= flash[:notice] %>
+  <%= flash[:alert] %>
+
+<%= @statuses.each do |status| %> 
+  <%= status.title %>
+  <%= status.content %>
+  <br>
+<% end %>
+
+

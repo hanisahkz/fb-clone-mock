@@ -27,14 +27,17 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-
+  #done
   describe "POST #create" do
     # happy_path
     context "valid_params" do
+
+      #done
       it "creates new user if params are correct" do
         expect {post :create, :user => valid_params}.to change(User, :count).by(1)
       end
 
+      #done
       it 'redirects to user path and displays flash notice after user created successfully' do
         post :create, user: valid_params
         expect(response).to redirect_to(User.last)
@@ -42,16 +45,17 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
+    #done
     # unhappy_path
     context "invalid_params" do
       before do
         post :create, user: invalid_params
       end
-
+      #done
       it "displays flash alert message" do
         expect(flash[:alert]).to include "Error creating account: "
       end
-
+      #done
       it "renders new template again" do
         expect(response).to render_template("new")
       end
@@ -76,12 +80,13 @@ RSpec.describe UsersController, type: :controller do
 
   end
 
-
+  #done
   describe "PUT #update" do
   # happy_path
     context "with valid update params" do
       it "updates the requested user" do
-        user = user1
+        # user = user1 # <-- ori. NH changed
+        user = user
         put :update, {:id => user.to_param, :user => valid_params_update}
         user.reload
         expect( user.email ).to eq valid_params_update[:email]

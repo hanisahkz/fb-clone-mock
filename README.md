@@ -36,3 +36,4 @@ There are a lot of tests, and you may get overwhelmed. If you want to focus on j
 ## Some related reading:
 
 * https://robots.thoughtbot.com/how-we-test-rails-applications
+# fb-clone-mock
